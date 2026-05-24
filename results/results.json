@@ -1,0 +1,26 @@
+{
+  "model": "ResNet18 (ImageNet pretrained, transfer learning)",
+  "dataset": "Lung Cancer CT Scans (Mahadih534/Chest_CT-Scan_images-Dataset)",
+  "dataset_source": "IQ-OTH/NCCD Lung Cancer Dataset",
+  "num_classes": 4,
+  "classes": [
+    "adenocarcinoma",
+    "large_cell_carcinoma",
+    "normal",
+    "squamous_cell_carcinoma"
+  ],
+  "train_samples": 684,
+  "test_samples": 315,
+  "test_accuracy": 0.6571428571428571,
+  "per_class_accuracy": {
+    "adenocarcinoma": 0.4166666666666667,
+    "large_cell_carcinoma": 0.37254901960784315,
+    "normal": 0.9814814814814815,
+    "squamous_cell_carcinoma": 0.9444444444444444
+  },
+  "parameters": {
+    "total": 11441220,
+    "trainable": 11441220
+  },
+  "timestamp": "2026-05-24T20:07:49.781091"
+}
