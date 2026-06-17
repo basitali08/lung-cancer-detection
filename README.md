@@ -1,48 +1,52 @@
-# 🫁 Lung Cancer Detection & Classification AI
+<div align="center">
 
-[![Python](https://img.shields.io/badge/Python-3.9+-3776AB?logo=python)](https://python.org)
-[![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-EE4C2C?logo=pytorch)](https://pytorch.org)
-[![ResNet](https://img.shields.io/badge/Model-ResNet18-005A9C)](https://pytorch.org/hub/pytorch_vision_resnet/)
-[![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-FF4B4B?logo=streamlit)](https://streamlit.io)
-[![Dataset](https://img.shields.io/badge/Dataset-IQ--OTH%2FNCCD%20Lung%20Cancer-22c55e)](https://huggingface.co/datasets/Mahadih534/Chest_CT-Scan_images-Dataset)
+<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=700&size=28&duration=3000&pause=1000&color=EE4C2C&center=true&vCenter=true&width=600&lines=%F0%9F%AB%81+Lung+Cancer+Detection+AI;Deep+Learning+Classification;ResNet18+Transfer+Learning" alt="Lung Cancer Detection" />
 
-Deep learning system for **lung cancer detection** and **classification** from chest CT scans using transfer learning with ResNet18.
+<br>
+
+<img src="https://img.shields.io/badge/Python-3.9+-3776AB?style=for-the-badge&logo=python&logoColor=white&labelColor=1a1a2e">
+<img src="https://img.shields.io/badge/PyTorch-2.0+-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white&labelColor=1a1a2e">
+<img src="https://img.shields.io/badge/Model-ResNet18-005A9C?style=for-the-badge&labelColor=1a1a2e">
+<img src="https://img.shields.io/badge/Streamlit-Dashboard-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white&labelColor=1a1a2e">
+<img src="https://img.shields.io/badge/Dataset-IQ--OTH%2FNCCD-22c55e?style=for-the-badge&labelColor=1a1a2e">
+<img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge&labelColor=1a1a2e">
+
+<br>
+
+<img src="https://github-readme-stats.vercel.app/api?username=basitali08&show_icons=true&theme=radical&hide_border=true&count_private=true" width="400">
+
+</div>
 
 ---
 
-## 🎯 What It Does
+## What It Does
 
 | Feature | Method | Output |
 |---------|--------|--------|
 | **Cancer Detection** | ResNet18 CNN | Cancer / Normal |
-| **Cancer Classification** | 4-class softmax | Adenocarcinoma / Large Cell Carcinoma / Squamous Cell Carcinoma / Normal |
+| **Cancer Classification** | 4-class softmax | Adenocarcinoma / Large Cell Carcinoma / Squamous Cell / Normal |
 | **Cancer Staging** | Clinical mapping | Stage I-IV based on type |
 | **Clinical Guidance** | Rule-based | Treatment recommendations |
 
 ---
 
-## 🏗 Architecture
+## Architecture
 
 ```mermaid
 graph TD
     A[CT Scan Input] --> B[Resize 224x224]
-    B --> C[ResNet18<br/>Pre-trained on ImageNet<br/>18 layers · 11.4M params]
-    C --> D[Custom Classification Head<br/>Dropout → 512 → ReLU → Dropout → 4]
-    D --> E[Softmax → Prediction]
+    B --> C[ResNet18 Pre-trained on ImageNet]
+    C --> D[Custom Classification Head]
+    D --> E[Softmax Prediction]
     E --> F{Decision}
     F -->|Cancer| G[Type Classification]
     F -->|Normal| H[Healthy Result]
-    G --> I[Adenocarcinoma<br/>Stage II-IV · High Risk]
-    G --> J[Large Cell Carcinoma<br/>Stage II-III · High Risk]
-    G --> K[Squamous Cell Carcinoma<br/>Stage I-III · Mod-High Risk]
-    I --> L[Clinical Guidance]
-    J --> L
-    K --> L
+    G --> I[Clinical Guidance]
 ```
 
 ---
 
-## 📊 Results
+## Results
 
 | Metric | Score |
 |--------|-------|
@@ -59,51 +63,19 @@ graph TD
 | **Adenocarcinoma** | 120 | 41.67% | II-IV | High |
 | **Large Cell Carcinoma** | 51 | 37.25% | II-III | High |
 
-> **Note:** Adenocarcinoma and large cell carcinoma are subtypes of non-small cell lung cancer (NSCLC) and share similar visual features in CT scans, explaining the lower per-class accuracy. Performance can be improved with more training epochs or a deeper architecture (ResNet50).
+---
+
+## Dashboard Features
+
+- **Upload CT Scan** — Drag & drop image analysis
+- **Instant Diagnosis** — Cancer type + confidence score
+- **Cancer Staging** — Clinical stage based on classification
+- **Clinical Guidance** — Treatment recommendations by cancer type
+- **Probability Chart** — Class-wise prediction breakdown
 
 ---
 
-## 🛠 Tech Stack
-
-| Layer | Technology | Purpose |
-|-------|-----------|---------|
-| **Framework** | PyTorch 2.0+ | Deep learning engine |
-| **Architecture** | ResNet18 (ImageNet pre-trained) | Transfer learning backbone |
-| **Augmentation** | Random flip, rotation, color jitter | Generalization |
-| **Optimizer** | AdamW + ReduceLROnPlateau | Training |
-| **UI** | Streamlit + Plotly | Interactive dashboard |
-| **Data** | IQ-OTH/NCCD Lung Cancer Dataset | 999 CT scan images |
-
----
-
-## 📁 Project Structure
-
-```
-lung-cancer-detection/
-├── app.py                          # Streamlit dashboard
-├── src/
-│   └── lung_cancer_pipeline.py      # Training + evaluation pipeline
-├── data/
-│   ├── train/                      # 684 CT images (4 classes)
-│   │   ├── adenocarcinoma/
-│   │   ├── large_cell_carcinoma/
-│   │   ├── normal/
-│   │   └── squamous_cell_carcinoma/
-│   └── test/                       # 315 CT images (4 classes)
-├── models/
-│   └── best_model.pth              # Trained ResNet18 weights
-├── results/
-│   ├── confusion_matrix.png        # Classification heatmap
-│   ├── training_history.png        # Loss + accuracy curves
-│   └── results.json                # Full metrics
-├── download_data.py
-├── requirements.txt
-└── README.md
-```
-
----
-
-## 🚀 How to Run
+## Quick Start
 
 ```bash
 # 1. Install
@@ -121,19 +93,50 @@ streamlit run app.py
 
 ---
 
-## 🖥 Dashboard Features
+## Project Structure
 
-- **Upload CT Scan** — Drag & drop image analysis
-- **Instant Diagnosis** — Cancer type + confidence score
-- **Cancer Staging** — Clinical stage based on classification
-- **Clinical Guidance** — Treatment recommendations by cancer type
-- **Probability Chart** — Class-wise prediction breakdown
+```
+lung-cancer-detection/
+├── app.py                          # Streamlit dashboard
+├── src/
+│   └── lung_cancer_pipeline.py      # Training + evaluation pipeline
+├── data/
+│   ├── train/                      # 684 CT images (4 classes)
+│   └── test/                       # 315 CT images (4 classes)
+├── models/
+│   └── best_model.pth              # Trained ResNet18 weights
+├── results/
+│   ├── confusion_matrix.png
+│   ├── training_history.png
+│   └── results.json
+├── download_data.py
+├── requirements.txt
+└── README.md
+```
 
 ---
 
-## 📚 Dataset
+## Tech Stack
 
-The [IQ-OTH/NCCD Lung Cancer Dataset](https://huggingface.co/datasets/Mahadih534/Chest_CT-Scan_images-Dataset) contains 999 CT scan images from the Iraq-Oncology Teaching Hospital/National Center for Cancer Diseases. Images were collected from patients across multiple stages and classified by oncologists.
+| Layer | Technology | Purpose |
+|-------|-----------|---------|
+| **Framework** | PyTorch 2.0+ | Deep learning engine |
+| **Architecture** | ResNet18 (ImageNet pre-trained) | Transfer learning backbone |
+| **Augmentation** | Random flip, rotation, color jitter | Generalization |
+| **Optimizer** | AdamW + ReduceLROnPlateau | Training |
+| **UI** | Streamlit + Plotly | Interactive dashboard |
+| **Data** | IQ-OTH/NCCD Lung Cancer Dataset | 999 CT scan images |
+
+---
+
+<div align="center">
+
+**Built with Python, PyTorch, ResNet18, Streamlit**
+
+[![GitHub stars](https://img.shields.io/github/stars/basitali08/lung-cancer-detection?style=social)](https://github.com/basitali08/lung-cancer-detection)
+[![GitHub forks](https://img.shields.io/github/forks/basitali08/lung-cancer-detection?style=social)](https://github.com/basitali08/lung-cancer-detection)
+
+</div>
 
 ---
 
